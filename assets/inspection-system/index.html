@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Choose walls · Construction inspection</title><link rel="stylesheet" href="style.css">
+<main><nav><a href="/">Facade Studio</a><a href="/assets/digital-twin/index.html">Building condition twin</a></nav>
+<p class="eyebrow">CONSTRUCTION ROOM · SIMULATION</p><h1>Which walls should we inspect?</h1>
+<p class="lead">Choose the walls, preview the route, then start the drone. It scans the selected walls and returns to the takeoff area.</p>
+<section aria-labelledby="selection-title"><h2 id="selection-title">1. Choose your inspection area</h2>
+<div class="selection-layout"><div><fieldset id="wall-options"><legend>Select one or more walls</legend>
+<label class="wall-choice"><input type="checkbox" name="wall" value="N"><span><strong>North wall</strong><small>24 m × 6 m</small></span></label>
+<label class="wall-choice"><input type="checkbox" name="wall" value="E"><span><strong>East wall</strong><small>18 m × 6 m</small></span></label>
+<label class="wall-choice"><input type="checkbox" name="wall" value="S" checked><span><strong>South wall</strong><small>24 m × 6 m</small></span></label>
+<label class="wall-choice"><input type="checkbox" name="wall" value="W"><span><strong>West wall</strong><small>18 m × 6 m</small></span></label>
+</fieldset><div class="actions"><button id="select-all" class="secondary" type="button">Select all walls</button><button id="clear-walls" class="secondary" type="button">Clear selection</button></div>
+<p id="selection-summary" aria-live="polite">South wall selected.</p><label class="wall-choice"><input type="checkbox" id="adaptive-mode"><span><strong>Adaptive verification</strong><small>Experimental · seek a reachable, clearer view when evidence is uncertain.</small></span></label><button id="preview-route" type="button" disabled>Preview route</button></div>
+<div><svg id="selection-map" viewBox="0 0 700 550" role="img" aria-label="Top view of the room with selected walls"></svg><p class="small">Green edges: selected walls · Brown: construction equipment · Purple dashed: planned route. Different heights overlap in this top view.</p></div></div></section>
+<section aria-labelledby="route-title"><h2 id="route-title">2. Review and start</h2><p id="route-summary" aria-live="polite">Preview a route to see the planned scan coverage.</p>
+<p id="launch-note" class="notice" hidden></p><div class="actions"><button id="start-selected" type="button" disabled>Start selected inspection</button><button id="stop" type="button" class="danger" disabled>Stop and land</button></div>
+<p class="small">Only selected walls are included in the inspection results. The full room and all equipment remain in the obstacle map. The camera faces the current wall when capturing. Optional verification images can add to the planned capture count.</p></section>
+<section aria-live="polite"><div class="row"><h2>Mission activity</h2><span id="badge">CHECKING</span></div><p id="phase">Connecting to the local app…</p><p id="mission-walls" class="small"></p><progress id="capture-progress" max="120" value="0" aria-label="Saved inspection captures"></progress><p id="capture-count" class="small">No mission started.</p><pre id="log"></pre><p id="error" role="alert"></p><a id="report" hidden>Open this run's results →</a></section>
+<section><h2>Latest evidence</h2><div id="latest">Saved results will appear here.</div></section>
+
+<p class="small">AirSim research system. The navigation controller checks static and observed obstacles. This simulation does not predict fast-moving machinery or establish real-building accuracy. Edge-clipped predictions can still need verification.</p></main><script src="app.js"></script></html>
